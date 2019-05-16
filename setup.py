@@ -7,7 +7,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='imdbdump',
-      version='0.1.1',
+      version='0.1.2',
       description='Helps you to dump TV show IMDb ratings in machine-readable formats.',
       url='http://github.com/fuuman/imdbdump',
       author='Marco Schanz',
