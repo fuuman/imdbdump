@@ -4,6 +4,7 @@ import json
 import csv
 import sys
 import argparse
+import os
 
 parser = argparse.ArgumentParser(description='Fetch ratings for every single episode of all seasons for a TV show and save it optionally to CSV oder JSON.')
 parser.add_argument('-c', '--csv', dest='csv', action='store_true', default=False)
@@ -11,6 +12,7 @@ parser.add_argument('-j', '--json', dest='json', action='store_true', default=Fa
 parser.add_argument('shows', nargs=argparse.REMAINDER)
 
 logging.basicConfig(format='%(asctime)s [%(levelname)s] %(message)s', level=logging.INFO)
+
 
 class ImdbFetcher:
   """
@@ -37,7 +39,15 @@ class ImdbFetcher:
     self.filename = f'{self.title.lower().replace(" ", "_")}'
 
     logging.info(f'Finished parsing {len(self.all_seasons)} season(s).')
-  
+
+  def _create_output(func):
+    def wrapper(self):
+      if not os.path.exists('output'):
+        os.makedirs('output')
+      func(self)
+    return wrapper
+
+  @_create_output
   def save_json(self):
     js = {}
     js[f'{self.title}'] = {}
@@ -49,6 +59,7 @@ class ImdbFetcher:
       json.dump(js, json_file, indent=2)
     logging.info(f'Ratings dumped to output/{self.filename}.json')
 
+  @_create_output
   def save_csv(self):
     with open(f'output/{self.filename}.csv', mode='w') as csv_file:
       w = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -56,6 +67,7 @@ class ImdbFetcher:
       for s, season_ratings in enumerate(self.all_seasons):
         w.writerow([f'S{s+1:02}'] + season_ratings)
     logging.info(f'Ratings dumped to output/{self.filename}.csv')
+
 
 if __name__ == "__main__":
   args = parser.parse_args()
