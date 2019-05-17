@@ -20,6 +20,11 @@ _Example_: https://www.imdb.com/title/tt0944947/ for 'Game Of Thrones'. `tt09449
 ```
 python imdb_fetcher.py --json --csv tt0944947
 ```
+You also are able to give more then one id as a parameter. </br>
+```
+python imdb_fetcher.py --json --csv tt0944947 tt1124373 tt0903747
+```
+That would work too.
 
 ### Importing
 ```python
