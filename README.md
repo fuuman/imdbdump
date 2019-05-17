@@ -11,6 +11,8 @@ pip install imdbdump
 ```
 
 ## Usage
+The input is always the unique id of that TV show on imdb.com. </br>
+_Example_: https://www.imdb.com/title/tt0944947/ for 'Game Of Thrones'. `tt0944947` would be the needed parameter.
 ### CLI
 ```
 python imdb_fetcher.py --json --csv tt0944947
