@@ -3,7 +3,7 @@ import os
 import csv
 from imdbdump.imdb_fetcher import ImdbFetcher
 
-def test_json():
+def test_csv():
     imdb = ImdbFetcher('tt0141842')
     imdb.save_csv()
     with open('test/expected_the_sopranos.csv', 'r') as expected_csv_file:
