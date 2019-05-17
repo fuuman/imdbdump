@@ -1,5 +1,6 @@
 # IMDbDump
 [![Build Status](https://travis-ci.com/fuuman/imdbdump.svg?token=dNr9gvKCz2cmaPy1fg3m&branch=master)](https://travis-ci.com/fuuman/imdbdump)
+[![Coverage Status](https://coveralls.io/repos/github/fuuman/imdbdump/badge.svg?branch=master)](https://coveralls.io/github/fuuman/imdbdump?branch=master)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 IMDbDump is a small library that provides the functionality to parse imdb.com for all single episode ratings for TV shows. The main focus lays on fetching IMDb data and save it in machine-readable formats to do some data science and visualization stuff with it. It's easily possible to dump fetched information to a JSON or CSV file. You can use the command line interface or import it in your own code.
