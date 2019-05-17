@@ -21,7 +21,8 @@ class ImdbFetcher:
   def __init__(self, tv_show):
     url = f'https://www.imdb.com/title/{tv_show}/episodes'
     session = HTMLSession()
-    r = session.get(url)
+    headers = {"Accept-Language": "en-US,en;q=0.5"}
+    r = session.get(url, headers=headers)
     no_seasons = len(r.html.find('#bySeason > option'))
     self.title = r.html.find('#main > div.article.listo.list > div.subpage_title_block > div > h3 > a', first=True).text
     logging.info(f'Start parsing ratings of "{self.title}"..')
