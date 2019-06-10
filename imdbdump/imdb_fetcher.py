@@ -6,7 +6,8 @@ import argparse
 import os
 
 parser = argparse.ArgumentParser(
-    description='Fetch ratings for every single episode of all seasons for a TV show and save it optionally to CSV oder JSON.')
+    description='Fetch ratings for every single episode of all '
+                'seasons for a TV show and save it optionally to CSV oder JSON.')
 parser.add_argument('-c', '--csv', dest='csv', action='store_true', default=False,
                     help='Dump fetched data to CSV file.')
 parser.add_argument('-j', '--json', dest='json', action='store_true', default=False,
@@ -46,7 +47,6 @@ class ImdbFetcher:
 
         logging.info(f'Finished parsing {len(self.ratings)} season(s).')
 
-    @staticmethod
     def _create_output(func):
         def wrapper(self):
             if not os.path.exists('output'):
