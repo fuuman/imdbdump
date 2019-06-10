@@ -3,6 +3,7 @@ import os
 import csv
 from imdbdump.imdb_fetcher import ImdbFetcher
 
+
 def test_csv():
     imdb = ImdbFetcher('tt0141842')
     imdb.save_csv()

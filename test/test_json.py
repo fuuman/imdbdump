@@ -3,6 +3,7 @@ import json
 import os
 from imdbdump.imdb_fetcher import ImdbFetcher
 
+
 def test_json():
     imdb = ImdbFetcher('tt0141842')
     imdb.save_json()
@@ -12,5 +13,6 @@ def test_json():
         my_js = json.load(js_file)
     assert expected_js == my_js
     os.remove('output/the_sopranos.json')
+
 
 
