@@ -11,7 +11,15 @@ def test_json():
         expected_js = json.load(expected_js_file)
     with open('output/the_sopranos.json', 'r') as js_file:
         my_js = json.load(js_file)
-    assert expected_js == my_js
+
+    # assert same amount of seasons
+    assert len(expected_js[imdb.title]) == len(my_js[imdb.title])
+
+    # assert same amount of episodes per season
+    for i in range(1, len(my_js[imdb.title]) + 1):
+        assert len(expected_js[imdb.title][f'S{i:02}']) == len(my_js[imdb.title][f'S{i:02}'])
+
+    # cleanup
     os.remove('output/the_sopranos.json')
 
 

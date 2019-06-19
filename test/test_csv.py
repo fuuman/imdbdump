@@ -12,6 +12,9 @@ def test_csv():
         expected_csv = list(map(tuple, reader))
     with open('output/the_sopranos.csv', 'r') as csv_file:
         reader = csv.reader(csv_file)
-        my_csv = list(map(tuple, reader))
-    assert expected_csv == my_csv
+        my_csv = [e for e in list(map(tuple, reader)) if e != ()]
+    for expected_row, row in zip(expected_csv, my_csv):
+        assert len(expected_row) == len(row)
+
+    # cleanup
     os.remove('output/the_sopranos.csv')
