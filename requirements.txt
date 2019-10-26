@@ -19,7 +19,7 @@ py==1.8.0
 pyee==6.0.0
 Pygments==2.4.0
 pyppeteer==0.0.25
-pyquery==1.4.0
+pyquery==1.4.1
 pytest==4.5.0
 readme-renderer==24.0
 requests==2.22.0
